@@ -87,24 +87,6 @@ By following this framework, the project demonstrates how **data-driven vendor m
 
 ## 🔧 Getting Started
 
-1. Clone the Repository
-
-git clone https://github.com/vickythatguy/vendor-performance-analytics.git
-cd vendor-performance-analytics
-
-2. Install Dependencies
-pip install -r requirements.txt
-
-3. Ingest Data
-python scripts/ingest_data.py
-python scripts/get_vendor_summary.py
-
-4. Run Analysis
-jupyter lab
-# or
-jupyter notebook
-
-
 Open Vendor Performance Analysis.ipynb to run full analysis.
 
 5. Explore Power BI
@@ -114,6 +96,3 @@ Open powerbi/vendor_performance.pbix to view interactive dashboards.
 👤 Author
 
 Vignesh Subramaniam
-🔗 LinkedIn
-
-📂 Portfolio
