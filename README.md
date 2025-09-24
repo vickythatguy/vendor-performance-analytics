@@ -1,165 +1,119 @@
 # 📊 Vendor Performance Analytics
 
-_End-to-end analytics project using **SQL, Python, and Power BI** to evaluate vendor contribution, profitability, stock turnover, and purchasing efficiency._
-
-![Made with Python](https://img.shields.io/badge/Python-3.10+-blue)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
-![Power BI](https://img.shields.io/badge/Power%20BI-Report-yellow)
+An **end-to-end data analytics project** designed to evaluate **vendor performance** using a complete pipeline of **SQL, Python, Power BI (with DAX), and business reporting**.  
+This project mirrors **industry standards** for data analysis — from raw data ingestion to actionable insights — covering **logging, data engineering, hypothesis testing, EDA, visualization, and reporting**.
 
 ---
 
 ## 🚀 Project Overview
-- Ingest vendor transactional data and stage it in a local database.
-- Perform **EDA** (distributions, correlations, outliers).
-- Build **Top Vendors / Brands** analyses and Pareto charts.
-- Evaluate **bulk purchasing** impact on unit costs.
-- Compute **profitability metrics**: Gross Profit, Profit Margin, Stock Turnover, Sales/Purchase Ratio.
-- Run **confidence intervals** and **hypothesis tests** (t-tests) on profit margins.
-- Design a **Power BI dashboard** for executive reporting.
+
+Vendors play a critical role in retail and distribution. Measuring their efficiency requires analyzing:
+- Sales contribution
+- Purchasing efficiency
+- Profit margins
+- Inventory turnover
+- Bulk purchase cost savings
+
+This project answers these questions by building a **robust vendor analytics pipeline**.
 
 ---
 
-## 📂 Repository Structure
+## ⚙️ Tech Stack
 
-├── Draft.ipynb # Notebook used up to EDA (early exploration)
+- **SQL (SQLite + dbt)** → Data ingestion, cleaning, dimensional modeling  
+- **Python (Pandas, NumPy, SciPy, Matplotlib, Seaborn, SQLAlchemy)** → EDA, hypothesis testing, vendor KPIs  
+- **Power BI (DAX)** → Interactive dashboards for vendor contribution, profit margins, and turnover  
+- **Reporting** → Automated business-ready reports with statistical validation  
 
-├── EDA.ipynb # Supporting exploration/plots
-
-├── Vendor Performance Analysis.ipynb# Main notebook: stats, tests, insights
-
-├── get_vendor_summary.py # Builds vendor_sales_summary from source tables
-
-├── ingestion_db.py # CSV → DB ingestion
-
-├── README.md # This file
-
-└── requirements.txt # Python dependencies
-
-
-
-**Dataset:** Stored on Google Drive →  
-🔗 https://drive.google.com/drive/folders/1au8URS7ZlzxIVMv2C-tODAJ23DmBxJTT?usp=drive_link
-
-> `Draft.ipynb` is the notebook I used through EDA; after that I continued in `Vendor Performance Analysis.ipynb` for deeper analysis and statistical testing.
 
 ---
 
-## 🧠 Key Analyses & Visuals
-- Top 10 vendors/brands by sales (labeled horizontal bars with human-readable values, e.g., “7.9M”).
-- **Pareto chart**: Vendor contribution to total purchases (bar + cumulative % line).
-- **Donut chart**: Top-10 vendor share vs “Other Vendors”.
-- **Bulk purchasing**: Unit price vs order size buckets (Small/Medium/Large) with summary insights.
-- **Confidence intervals** for profit margins (top vs low performers) and **t-tests** for significance.
+## 📈 Key Analyses & Insights
+
+1. **Top Vendor Contribution**
+   - Top 10 vendors contribute **65.69% of purchases**, raising **supply chain dependency risks**.
+
+2. **Bulk Purchase Savings**
+   - Buying in bulk reduces **unit costs by ~72%** ($10.78 vs. $39.05 small orders).  
+   - Encourages vendors to place **larger, more profitable orders**.
+
+3. **Inventory Turnover**
+   - $2.71M tied up in unsold inventory.  
+   - Identified **low-turnover vendors**, suggesting **stock optimization + clearance strategies**.
+
+4. **Profit Margin Comparison**
+   - **Top vendors**: Avg. margin ~31.2%  
+   - **Low vendors**: Avg. margin ~41.6%  
+   - Indicates **pricing inefficiencies** among low-volume vendors.
+
+5. **Statistical Validation**
+   - **t-test** confirms profit margin differences between top & low vendors are **statistically significant**.  
+   - Implication: High-margin vendors need **pricing optimization**, while top-sellers should focus on **cost efficiency**.
 
 ---
 
-## 🔧 Tech Stack
-- **Python**: pandas, numpy, matplotlib, seaborn, scipy
-- **SQL/SQLite** (local dev)
-- **Power BI** (dashboard/reporting)
+## 🖥 Power BI Dashboard (DAX-Powered)
+
+The **Power BI dashboard** provides:
+- Vendor contribution overview  
+- Profitability & margin distribution  
+- Stock turnover trends  
+- Drill-down by brand/vendor  
+- DAX measures for **custom KPIs** (e.g., Profit Margin %, Stock Turnover, Sales-to-Purchase Ratio)  
+
+<img width="907" height="592" alt="image" src="https://github.com/user-attachments/assets/21418c66-bc6f-45af-9dd3-c157165f59bd" />
 
 ---
 
-## 🏁 Getting Started
+## ✅ Final Recommendations
 
-### 1) Clone the repo
-```bash
-git clone https://github.com/<your-username>/vendor-performance-analytics.git
+- **Diversify vendor base** to mitigate supply chain risks  
+- **Leverage bulk purchasing** for cost savings & efficiency  
+- **Optimize slow-moving inventory** with revised order sizes & clearance strategies  
+- **Re-evaluate pricing** for high-margin, low-volume brands to boost sales  
+- **Enhance marketing & distribution** for underperforming vendors  
+
+---
+
+## 📊 Results
+
+By following this framework, the project demonstrates how **data-driven vendor management** can:  
+✔ Improve profitability  
+✔ Reduce operational risks  
+✔ Enhance purchasing strategies  
+✔ Drive sustainable growth  
+
+---
+
+## 🔧 Getting Started
+
+1. Clone the Repository
+
+git clone https://github.com/vickythatguy/vendor-performance-analytics.git
 cd vendor-performance-analytics
-```
-### 2) Create & activate a virtual environment
-```bash
-# Windows (PowerShell)
-python -m venv .venv
-.venv\Scripts\Activate.ps1
 
-# macOS / Linux
-python3 -m venv .venv
-source .venv/bin/activate
-```
-### 3) Install dependencies
-```bash
+2. Install Dependencies
 pip install -r requirements.txt
-```
-### 4) Get the data
 
-Download the CSVs from Google Drive and place them in a local folder, e.g. ./data/.
+3. Ingest Data
+python scripts/ingest_data.py
+python scripts/get_vendor_summary.py
 
-# Drive link: https://drive.google.com/drive/folders/1au8URS7ZlzxIVMv2C-tODAJ23DmBxJTT?usp=drive_link
+4. Run Analysis
+jupyter lab
+# or
+jupyter notebook
 
-Folder expected by ingestion_db.py: data/ (you can change it in the script if needed).
 
-### 5) Ingest the data into a local DB
-```bash
-python ingestion_db.py
-```
-This will create (or update) a local SQLite DB (e.g., inventory.db) and load the CSV tables.
+Open Vendor Performance Analysis.ipynb to run full analysis.
 
----
+5. Explore Power BI
 
-### 6) Build the vendor summary table
-```bash
-python get_vendor_summary.py
-```
-This script creates a vendor_sales_summary table with consolidated metrics:
-
-GrossProfit
-
-ProfitMargin
-
-StockTurnover
-
-SalesToPurchaseRatio
-
-…and more KPIs.
-
-### 7) Run the notebooks
-
-Start Jupyter and explore the analysis step by step:
-
-Draft.ipynb → Exploratory Data Analysis (EDA phase)
-
-Vendor Performance Analysis.ipynb → Main analysis, statistical tests, and visualization
-📈 Power BI (Coming Soon)
-
-The Power BI dashboard (.pbix file + screenshots) will include:
-
-Vendor contribution overview
-
-Profitability & margin distribution
-
-Stock turnover & ordering efficiency
-
-Drill-down by brand/vendor
-
-✅ To-Do / Next Steps
-
- Upload the Power BI .pbix report
-
- Add unit tests for the SQL/Python transformations
-
- Parameterize ingestion paths using .env
-
- (Optional) Add a Dockerfile for one-shot reproducibility
+Open powerbi/vendor_performance.pbix to view interactive dashboards.
 
 👤 Author
 
 Vignesh Subramaniam
 🔗 LinkedIn
 
-📦 Requirements
-
-To run the notebooks and scripts, install the dependencies:
-
-pandas>=2.0
-numpy>=1.24
-matplotlib>=3.7
-seaborn>=0.13
-scipy>=1.11
-jupyterlab>=4.0
-sqlalchemy>=2.0
-
-
-👉 You can paste this straight into your README.md.  
-
-Do you also want me to add a **small "Sample Output" section** (with placeholders for charts) so your repo looks more visual when people scroll through it on GitHub?
+📂 Portfolio
